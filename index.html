@@ -1,41 +1,233 @@
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 1.5rem;
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Wildpark Potzberg</title>
+  <style>
+    :root{
+      --bg:#f2f8f3;--forest:#2f5d3a;--accent:#f1a545;--text:#2d2d2d;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth;}
+    header{background:var(--forest);color:#fff;position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;flex-wrap:wrap}
+    header h1{font-size:1.8rem}
+    nav a{margin:0 1rem;color:#fff;text-decoration:none;font-weight:500;opacity:0.9;transition:opacity .3s}
+    nav a:hover, nav a:focus{opacity:1;outline:2px dashed #fff}
+    .hamburger{display:none;cursor:pointer;flex-direction:column;gap:.3rem}
+    .hamburger div{width:25px;height:3px;background:#fff}
+    @media(max-width:768px){nav{display:none;flex-direction:column;width:100%;}nav.active{display:flex;} .hamburger{display:flex}}
+    .hero{background:linear-gradient(rgba(47,93,58,.6),rgba(0,0,0,.4)),url('https://upload.wikimedia.org/wikipedia/commons/3/31/Potzberg%2C_Germany_aerial_view.JPG')center/cover no-repeat;color:#fff;text-align:center;padding:8rem 2rem;animation:fadeIn 2s}
+    .hero h2{font-size:3rem;margin-bottom:1rem} .hero p{font-size:1.2rem;margin-bottom:2rem}
+    .btn{background:var(--accent);color:#fff;padding:.75rem 1.5rem;border-radius:30px;text-decoration:none;font-weight:bold;transition:background .3s}
+    .btn:hover, .btn:focus{background:#d88e36;outline:2px dashed #fff}
+    section{max-width:1100px;margin:auto;padding:4rem 2rem;animation:fadeUp 1s}
+    section h2{font-size:2.2rem;margin-bottom:1.5rem;color:var(--forest)}
+    ul{list-style:disc inside;margin:1rem 0 2rem}
+    .grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-bottom:2rem}
+    .card{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:transform .3s}
+    .card:hover, .card:focus-within{transform:translateY(-5px);outline:2px solid var(--accent)}
+    .gallery{position:relative;overflow:hidden;max-width:100%;margin:2rem auto}
+    .gallery-track{display:flex;transition:transform .5s ease}
+    .gallery img{width:100%;flex-shrink:0;display:block}
+    .gallery-button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(47,93,58,.7);border:none;color:#fff;padding:1rem;cursor:pointer;z-index:2;border-radius:50%}
+    .gallery-button:hover, .gallery-button:focus{background:var(--forest);outline:2px dashed #fff}
+    .gallery-button.prev{left:1rem} .gallery-button.next{right:1rem}
+    footer{background:var(--forest);color:#fff;text-align:center;padding:2rem}
+    #toTop{position:fixed;bottom:20px;right:20px;background:var(--accent);color:#fff;padding:0.75rem;border:none;border-radius:50%;display:none;cursor:pointer;z-index:1000}
+    #newsletter{background:#eaf4ea;padding:2rem;border-radius:12px;margin-top:2rem;}
+    input, textarea{width:100%;padding:0.75rem;margin-top:0.5rem;border:1px solid #ccc;border-radius:5px;}
+    input:focus, textarea:focus{outline:2px solid var(--forest);}
+    .error{color:red;font-size:0.9rem;}
+    .map-container{width:100%;height:400px;border-radius:12px;overflow:hidden;margin-top:2rem;}
+
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--forest);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2000;
+      animation: fadeIn 1s;
+    }
+    .cookie-banner p {
+      margin: 0;
+    }
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Wildpark Potzberg</h1>
+  <button class="hamburger" aria-label="Menü öffnen"><div></div><div></div><div></div></button>
+  <nav aria-label="Hauptnavigation">
+    <a href="#about">Über Uns</a><a href="#flugschau">Flugschau</a><a href="#infos">Infos</a><a href="#bilder">Bilder</a><a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Willkommen im Wildpark Potzberg</h2>
+  <p>Greifvögel, Wildtiere & Natur auf 30 ha erleben!</p>
+  <a href="#infos" class="btn">Jetzt planen</a>
+</section>
+
+<section id="about" tabindex="0">
+  <h2>Über den Park</h2>
+  <p>Seit 1984 beherbergt der Park über 800 Tiere – Elche, Wisente, Steinböcke, Wildschweine, Waschbären, Murmeltiere & mehr.</p>
+  <ul>
+    <li>Streichelzoo: Ponys, Kaninchen, Ziegen</li>
+    <li>4 km Rundwege & Waldlehrpfad</li>
+    <li>Spielplatz, Kiosk & Tierfutterverkauf</li>
+    <li>Restaurant „Adlerblick“</li>
+  </ul>
+</section>
+
+<section id="flugschau" style="background:#f8f8f8" tabindex="0">
+  <h2>Greifvogel-Flugschau</h2>
+  <p>Täglich 15 Uhr (März–Oktober) mit Adler, Falken, Bussarden & Kondoren – inkl. Hutklau & Eulen-Streicheln!</p>
+</section>
+
+<section id="infos" tabindex="0">
+  <h2>Infos</h2>
+  <div class="grid">
+    <div class="card"><h3>Öffnungszeiten</h3><p>10 – 18 Uhr täglich</p></div>
+    <div class="card"><h3>Eintritt</h3><p>Erwachsene 10,50 € · Kinder (4–16) 7 €</p></div>
+    <div class="card"><h3>Adresse</h3><p>Auf dem Potzberg 1<br>66887 Föckelberg</p></div>
+    <div class="card"><h3>Kontakt</h3><p>Tel: 06385 6249<br><a href="mailto:wildpark@potzberg.de">wildpark@potzberg.de</a></p></div>
+  </div>
+
+  <div id="newsletter">
+    <h3>Newsletter abonnieren</h3>
+    <form id="form-news">
+      <label for="email">Email-Adresse:</label>
+      <input id="email" type="email" required aria-required="true"/>
+      <span class="error" id="email-error"></span><br/>
+      <button type="submit" class="btn">Anmelden</button>
+    </form>
+    <p id="form-msg" role="status"></p>
+  </div>
+
+  <div class="map-container" aria-label="Google Karte mit Standort">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2609.511679914445!2d7.583259615675086!3d49.50621817936982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b31e6fcbb7fed3%3A0xa47fb82f3485b8ec!2sAuf%20dem%20Potzberg%201%2C%2066887%20F%C3%B6ckelberg!5e0!3m2!1sde!2sde!4v1686920000000!5m2!1sde!2sde"
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<section id="bilder" tabindex="0">
+  <h2>Bildergalerie</h2>
+  <div class="gallery">
+    <button class="gallery-button prev" aria-label="Vorheriges Bild">&#10094;</button>
+    <div class="gallery-track">
+      <img src="Adler_im_Flug.jpg" alt="Adler im Flug" loading="lazy">
+      <img src="Famile_und_Tiergehege.jpg" alt="Streicheltiere" loading="lazy">
+      <img src="Flugshow.jpg" alt="Flugschau" loading="lazy">
+      <img src="Parkgebäude.webp" alt="Parkgebäude" loading="lazy">
+    </div>
+    <button class="gallery-button next" aria-label="Nächstes Bild">&#10095;</button>
+  </div>
+</section>
+
+<section id="kontakt" tabindex="0">
+  <h2>Kontakt & Nachricht</h2>
+  <form id="contact-form">
+    <label for="name">Name:</label>
+    <input id="name" type="text" required aria-required="true"/>
+    <span class="error" id="name-error"></span>
+
+    <label for="msg">Nachricht:</label>
+    <textarea id="msg" rows="4" required aria-required="true"></textarea>
+    <span class="error" id="msg-error"></span>
+
+    <button type="submit" class="btn">Absenden</button>
+  </form>
+  <p id="contact-msg" role="status"></p>
+</section>
+
+<footer>
+  <p>&copy; 2025 Wildpark Potzberg · Auf dem Potzberg 1, 66887 Föckelberg</p>
+  <p><a href="#top">Nach oben</a></p>
+</footer>
+
+<button id="toTop" aria-label="Nach oben">&#8679;</button>
+
+<!-- Cookie-Banner -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie Hinweis">
+  <p>Diese Website verwendet Cookies, um Ihnen das beste Erlebnis zu bieten.</p>
+  <button id="cookie-accept" class="btn">Verstanden</button>
+</div>
+
+<script>
+  // Nav toggle
+  const ham = document.querySelector('.hamburger'), nav = document.querySelector('nav');
+  ham.addEventListener('click', () => nav.classList.toggle('active'));
+
+  // Gallery
+  const track = document.querySelector('.gallery-track'), slides = Array.from(track.children);
+  let current = 0;
+  document.querySelector('.prev').onclick = () => {
+    current = (current - 1 + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+  };
+  document.querySelector('.next').onclick = () => {
+    current = (current + 1) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+  };
+
+  // Back-to-top
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => { toTop.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+  toTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Newsletter form
+  const nf = document.getElementById('form-news'), email = nf.email, emailErr = document.getElementById('email-error'), msg = document.getElementById('form-msg');
+  nf.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!email.checkValidity()) {
+      emailErr.textContent = 'Bitte gültige E-Mail eingeben.';
+    } else {
+      emailErr.textContent = '';
+      msg.textContent = 'Vielen Dank für Ihre Anmeldung!';
+      nf.reset();
+    }
+  });
+
+  // Kontakt form
+  const cf = document.getElementById('contact-form'), nameI = cf.name, msgI = cf.msg, nameErr = document.getElementById('name-error'), msgErr = document.getElementById('msg-error'), contactMsg = document.getElementById('contact-msg');
+  cf.addEventListener('submit', e => {
+    e.preventDefault();
+    let ok = true;
+    if (!nameI.value.trim()) { nameErr.textContent = 'Name ist erforderlich.'; ok = false; }
+    else nameErr.textContent = '';
+    if (!msgI.value.trim()) { msgErr.textContent = 'Nachricht ist erforderlich.'; ok = false; }
+    else msgErr.textContent = '';
+    if (ok) {
+      contactMsg.textContent = 'Nachricht gesendet – danke!';
+      cf.reset();
+    }
+  });
+
+  // Cookie Banner
+  const banner = document.getElementById('cookie-banner');
+  const accept = document.getElementById('cookie-accept');
+  if (localStorage.getItem('cookieAccepted') !== 'true') {
+    banner.style.display = 'flex';
+  } else {
+    banner.style.display = 'none';
   }
-  nav a {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-  }
-  .hero h2 {
-    font-size: 2rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-  .btn {
-    width: 100%;
-    display: block;
-    margin-top: 1rem;
-    text-align: center;
-  }
-  .grid {
-    grid-template-columns: 1fr;
-  }
-  .card {
-    padding: 1rem;
-  }
-  .gallery img {
-    height: auto;
-    max-height: 300px;
-    object-fit: cover;
-  }
-  .gallery-button {
-    padding: 0.5rem;
-  }
-  input, textarea {
-    font-size: 1rem;
-  }
-  form button.btn {
-    width: 100%;
-  }
-}
+  accept.addEventListener('click', () => {
+    localStorage.setItem('cookieAccepted', 'true');
+    banner.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
